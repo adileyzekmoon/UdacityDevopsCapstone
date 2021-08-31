@@ -64,11 +64,11 @@ jobs:
               aws configure import --csv file://credentials.csv
               aws configure list
               aws configure list-profiles
-              export AWS_PROFILE=prometheus_udacity
+              export AWS_PROFILE=UdacityLab
         - run:
-            name: Update Kubeconfig
+            name: Login to Kubeconfig
             command: |
-              aws eks --region us-east-1 update-kubeconfig --name udacity-eks --profile prometheus_udacity
+              aws eks --region us-east-1 update-kubeconfig --name udacity-eks --profile UdacityLab
         - kubernetes/install-kubectl
         - run:
             name: Deploy to Kubernetes
