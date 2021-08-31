@@ -73,6 +73,7 @@ jobs:
             cluster-name: udacity-eks
             install-kubectl: true
             aws-region: us-east-1
+            verbose: true
         - kubernetes/create-or-update-resource:
             resource-file-path: "kubernetes.yml"
             get-rollout-status: true
