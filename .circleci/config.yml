@@ -69,7 +69,7 @@ jobs:
             get-rollout-status: true
             resource-name: deployment/udacity-capstone
         - kubernetes/update-container-image:
-            container-image-updates: "udacitycapstone=udacitycapstone"
+            container-image-updates: "udacity-capstone=udacitycapstone:latest"
             resource-file-path: "kubernetes.yml"
             get-rollout-status: true
             resource-name: deployment/udacity-capstone
