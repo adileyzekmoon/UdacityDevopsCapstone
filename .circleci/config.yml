@@ -82,7 +82,7 @@ workflows:
   default:
     jobs:
       - lint
-      - build-:
+      - build-image:
           requires: [lint]
       - deploy-kube:
           requires: [build-image]
