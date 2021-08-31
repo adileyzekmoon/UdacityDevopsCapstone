@@ -60,22 +60,22 @@ jobs:
     steps:
         - checkout
         - aws-eks/update-kubeconfig-with-authenticator:
-            cluster-name: udacity-eks
+            cluster-name: udacity-capstone
             install-kubectl: true
             aws-region: us-east-1
             verbose: true
-        # - kubernetes/create-or-update-resource:
-        #     resource-file-path: "kubernetes.yml"
-        #     get-rollout-status: true
-        #     resource-name: adileyzekmoon/udacitycapstone
-        # - kubernetes/create-or-update-resource:
-        #     resource-file-path: "kubernetes.yml"
-        - run:
-            name: Check on pod status
-            command: |
-              aws configure list
-              kubectl config use-context arn:aws:eks:us-east-1:823809779962:cluster/udacity-eks
-              kubectl apply -f kubernetes.yml
+        - kubernetes/create-or-update-resource:
+            resource-file-path: "kubernetes.yml"
+            get-rollout-status: true
+            resource-name: adileyzekmoon/udacitycapstone
+        - kubernetes/create-or-update-resource:
+            resource-file-path: "kubernetes.yml"
+        # - run:
+        #     name: Check on pod status
+        #     command: |
+        #       aws configure list
+        #       kubectl config use-context arn:aws:eks:us-east-1:823809779962:cluster/udacity-eks
+        #       kubectl apply -f kubernetes.yml
         - run:
             name: Check on pod status
             command: |
