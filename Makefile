@@ -26,6 +26,6 @@ lint:
 	hadolint Dockerfile
 	# This is a linter for Python source code linter: https://www.pylint.org/
 	# This should be run from inside a virtualenv
-	python -m pylint --disable=R,C,W1203,W1309 bp-dashboard/main.py
+	python -m pylint --disable=R,C,W1203,W1309,W1514 bp-dashboard/main.py
 
 all: install lint test
