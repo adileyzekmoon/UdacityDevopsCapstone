@@ -68,8 +68,11 @@ jobs:
             resource-file-path: "kubernetes.yml"
             get-rollout-status: true
             resource-name: deployment/udacity-capstone
-        - kubernetes/create-or-update-resource:
+        - kubernetes/update-container-image:
+            container-image-updates: "udacitycapstone=udacitycapstone"
             resource-file-path: "kubernetes.yml"
+            get-rollout-status: true
+            resource-name: deployment/udacity-capstone
         - run:
             name: Check on pod status
             command: |
