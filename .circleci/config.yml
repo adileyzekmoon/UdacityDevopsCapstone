@@ -49,8 +49,7 @@ jobs:
       - run:
           name: Build Image
           command: |
-            docker login --username adileyzekmoon --password ${dockerpw} &&\
-            docker image tag udacitycapstone adileyzekmoon/udacitycapstone
+            docker build --tag udacitycapstone .
       - run:
           name: Push Image
           command: |
