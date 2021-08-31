@@ -60,11 +60,13 @@ jobs:
         - checkout
         - run:
             name: configure AWS CLI
-            command: aws configure import --csv file://credentials.csv
+            command: |
+              aws configure import --csv file://credentials.csv
+              export AWS_PROFILE=prometheus_udacity
         - run:
             name: Update Kubeconfig
             command: |
-              aws eks --region us-east-1 update-kubeconfig --name udacity-eks
+              aws eks --region us-east-1 update-kubeconfig --name udacity-eks --profile
         - kubernetes/install-kubectl
         - run:
             name: Deploy to Kubernetes
