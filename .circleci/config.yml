@@ -60,7 +60,7 @@ jobs:
     steps:
         - checkout
         - aws-cli/setup:
-            profile-name: "UdacityLab"
+            profile-name: UdacityLab
             aws-secret-access-key: AWS_SECRET_ACCESS_KEY
             aws-region: AWS_REGION
             aws-access-key-id: AWS_ACCESS_KEY
