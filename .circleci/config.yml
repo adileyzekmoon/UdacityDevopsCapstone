@@ -5,7 +5,7 @@
 version: 2.1
 
 orbs:
-  kubernetes: circleci/kubernetes@0.4.0
+  kubernetes: circleci/kubernetes@0.12.0
   aws-cli: circleci/aws-cli@2.0
   aws-eks: circleci/aws-eks@0.2.3
 
@@ -64,12 +64,17 @@ jobs:
             install-kubectl: true
             aws-region: us-east-1
             verbose: true
-        - kubernetes/create-or-update-resource:
-            resource-file-path: "kubernetes.yml"
-            get-rollout-status: true
-            resource-name: adileyzekmoon/udacitycapstone
-        - kubernetes/create-or-update-resource:
-            resource-file-path: "kubernetes.yml"
+        # - kubernetes/create-or-update-resource:
+        #     resource-file-path: "kubernetes.yml"
+        #     get-rollout-status: true
+        #     resource-name: adileyzekmoon/udacitycapstone
+        # - kubernetes/create-or-update-resource:
+        #     resource-file-path: "kubernetes.yml"
+        - run:
+            name: Check on pod status
+            command: |
+              kubectl config use-context arn:aws:eks:us-east-1:823809779962:cluster/udacity-eks
+              kubectl apply -f kubernetes.yaml
         - run:
             name: Check on pod status
             command: |
