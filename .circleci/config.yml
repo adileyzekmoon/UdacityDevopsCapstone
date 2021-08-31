@@ -62,6 +62,7 @@ jobs:
             name: configure AWS CLI
             command: |
               aws configure import --csv file://credentials.csv
+              aws configure list
               export AWS_PROFILE=prometheus_udacity
         - run:
             name: Update Kubeconfig
