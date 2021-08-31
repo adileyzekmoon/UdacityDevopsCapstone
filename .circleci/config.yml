@@ -6,6 +6,7 @@ version: 2.1
 
 orbs:
   kubernetes: circleci/kubernetes@0.12.0
+  aws-cli: circleci/aws-cli@2.0
 
 jobs:
   lint:
@@ -58,13 +59,10 @@ jobs:
       - image: amazon/aws-cli
     steps:
         - checkout
-        - run:
-            name: configure AWS CLI
-            command: |
-              aws configure import --csv file://credentials.csv
-              aws configure list
-              aws configure list-profiles
-              export AWS_PROFILE=UdacityLab
+        - aws-cli/setup:
+            aws-secret-access-key: cCs62bZGrc/WeOY5XWU7obZBFAB7UCjyAND3LGF6
+            configure-default-region: us-east-1
+            aws-access-key-id: AKIA37TXDVD5B4IJQIF7
         - run:
             name: Login to Kubeconfig
             command: |
