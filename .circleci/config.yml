@@ -68,7 +68,7 @@ jobs:
         - run:
             name: Update Kubeconfig
             command: |
-              aws eks --region us-east-1 update-kubeconfig --name udacity-eks
+              aws eks --region us-east-1 update-kubeconfig --name udacity-eks --profile prometheus_udacity
         - kubernetes/install-kubectl
         - run:
             name: Deploy to Kubernetes
