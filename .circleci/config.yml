@@ -63,6 +63,7 @@ jobs:
             command: |
               aws configure import --csv file://credentials.csv
               aws configure list
+              aws configure list-profiles
               export AWS_PROFILE=prometheus_udacity
         - run:
             name: Update Kubeconfig
@@ -83,8 +84,8 @@ workflows:
   default:
     jobs:
       # - lint
-      - build-image
+      # - build-image
           # requires: [lint]
-      - deploy-kube:
-          requires: [build-image]
+      - deploy-kube
+          # requires: [build-image]
   
