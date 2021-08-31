@@ -63,6 +63,11 @@ jobs:
             aws-secret-access-key: AWS_SECRET_ACCESS_KEY
             aws-region: AWS_REGION
             aws-access-key-id: AWS_ACCESS_KEY
+        - run:
+            name: Check AWS CLI config
+            command: |
+              aws configure list
+              aws configure list-profiles
         - aws-eks/update-kubeconfig-with-authenticator:
             cluster-name: udacity-eks
             install-kubectl: true
