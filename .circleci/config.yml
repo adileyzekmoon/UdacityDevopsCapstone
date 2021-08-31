@@ -62,8 +62,8 @@ jobs:
     steps:
         - checkout
         - run:
-          name: configure AWS CLI
-          command: aws configure import --csv file://credentials.csv
+            name: configure AWS CLI
+            command: aws configure import --csv file://credentials.csv
         - aws-eks/update-kubeconfig-with-authenticator:
             cluster-name: udacity-eks
             install-kubectl: true
