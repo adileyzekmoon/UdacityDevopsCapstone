@@ -44,10 +44,12 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - checkout
+      - setup_remote_docker:
+            version: 19.03.13
       - run:
           name: Build Image
           command: |
-            docker login --username adileyzekmoon --password baozakeruga &&\
+            docker login --username adileyzekmoon --password ${dockerpw} &&\
             docker image tag udacitycapstone adileyzekmoon/udacitycapstone
       - run:
           name: Push Image
@@ -78,7 +80,7 @@ jobs:
 workflows:
   default:
     jobs:
-      - lint
+      # - lint
       - build-image:
           requires: [lint]
       - deploy-kube:
