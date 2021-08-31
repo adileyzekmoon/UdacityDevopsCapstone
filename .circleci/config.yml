@@ -50,7 +50,7 @@ jobs:
       - run:
           name: Push Image
           command: |
-            docker login --username adileyzekmoon --password baozakeruga &&\
+            docker login --username adileyzekmoon --password ${dockerpw} &&\
             docker image tag udacitycapstone adileyzekmoon/udacitycapstone
             docker image push adileyzekmoon/udacitycapstone
 
@@ -60,9 +60,9 @@ jobs:
     steps:
         - checkout
         - aws-cli/setup:
-            aws-secret-access-key: $AWS_SECRET_ACCESS_KEY
+            aws-secret-access-key: ${AWS_SECRET_ACCESS_KEY}
             aws-region: us-east-1
-            aws-access-key-id: $AWS_ACCESS_KEY
+            aws-access-key-id: ${AWS_ACCESS_KEY}
         - run:
             name: Login to Kubeconfig
             command: |
